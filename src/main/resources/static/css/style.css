@@ -1,0 +1,17 @@
+body {
+    background-image: url('/images/imp_background_list.png'); /* Шлях до вашого зображення */
+    background-size: cover; /* Розтягує зображення на весь екран */
+    background-position: center; /* Центрує зображення */
+    background-repeat: no-repeat; /* Запобігає повторенню зображення */
+    background-attachment: fixed; /* Залишає зображення нерухомим при прокручуванні */
+    /* Можете додати напівпрозорий оверлей, щоб текст був краще читабельним */
+    /* background-color: rgba(255, 255, 255, 0.5); /* Білий оверлей з 50% прозорістю */
+}
+
+/* Якщо ви хочете, щоб контент був напівпрозорим або мав фон, щоб краще читався */
+.container {
+    background-color: rgba(255, 255, 255, 0.9); /* Напівпрозорий білий фон для контейнера */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}

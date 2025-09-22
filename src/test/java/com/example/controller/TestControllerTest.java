@@ -4,6 +4,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.context.annotation.Import;
+import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.web.servlet.MockMvc;
 import com.example.config.SecurityConfig;
 
@@ -18,6 +19,7 @@ public class TestControllerTest {
     private MockMvc mockMvc;
 
     @Test
+    @WithMockUser
     public void testShouldReturnTestPage() throws Exception {
         mockMvc.perform(get("/test"))
                 .andExpect(status().isOk())
