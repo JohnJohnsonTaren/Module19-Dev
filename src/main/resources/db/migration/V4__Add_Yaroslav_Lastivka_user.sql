@@ -1,2 +1,2 @@
 INSERT INTO users (username, password, authority)
-VALUES ('Yaroslav Lastivka', '$2a$10$VQQ0bgO/Lvu5X/m50abBte0rylmPvzMICyBp/8YK3bZj9mYqtzZnG', 'ROLE_USER');
+VALUES ('Yaroslav Lastivka', '$2a$10$suxTZ1dWo8r69pMhDCXh4Ot6XdklRm3Ez5GDvaMXsPnCCy1D5yjxm', 'ROLE_USER');
