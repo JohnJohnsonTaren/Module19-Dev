@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<!DOCTYPE suppressions PUBLIC
+    "-//Checkstyle//DTD SuppressionXpathFilter Experimental Configuration 1.2//EN"
+    "dtds/suppressions_1_2_xpath_experimental.dtd">
+
+<suppressions>
+    <!-- Приклад виключення методу з перевірки назви -->
+    <suppress-xpath
+        files=".*Test\.java"
+        checks="MethodName"
+        query="//METHOD_DEF[./IDENT[contains(@text, 'test')]]"/>
+</suppressions>

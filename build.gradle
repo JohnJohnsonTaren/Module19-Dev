@@ -1,0 +1,77 @@
+plugins {
+	id 'java'
+	id 'org.springframework.boot' version '3.5.5'
+	id 'io.spring.dependency-management' version '1.1.7'
+    id 'checkstyle'
+}
+
+checkstyle {
+    toolVersion = '10.12.1'  // Більш стабільна версія
+    configFile = file('config/checkstyle/checkstyle.xml')
+    configDirectory = file('config/checkstyle')
+    maxErrors = 0      // Встановлює максимальну кількість помилок
+    maxWarnings = 100  // Встановлює максимальну кількість попереджень
+    // Виправлена проблема з configProperties - використовуємо абсолютні шляхи
+    configProperties = [
+        'org.checkstyle.google.suppressionfilter.config': file('config/checkstyle/checkstyle-suppressions.xml').absolutePath,
+        'org.checkstyle.google.suppressionxpathfilter.config': file('config/checkstyle/checkstyle-xpath-suppressions.xml').absolutePath
+    ]
+    ignoreFailures = false  // Збій завдання, якщо є помилки
+    showViolations = true   // Показувати порушення в звіті
+}
+
+// Замість jvmArgs використовуємо системні властивості
+// Це дозволить включити завантаження DTD
+System.setProperty("checkstyle.enableExternalDtdLoad", "true")
+
+// Додамо необхідні файли для звітів Checkstyle
+tasks.withType(Checkstyle).configureEach {
+    reports {
+        xml.required = true
+        html.required = true
+    }
+}
+
+group = 'com.example'
+version = '0.0.1-SNAPSHOT'
+description = 'Demo project for Spring Boot'
+
+java {
+	toolchain {
+		languageVersion = JavaLanguageVersion.of(21)
+	}
+}
+
+configurations {
+	compileOnly {
+		extendsFrom annotationProcessor
+	}
+}
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+	implementation 'org.springframework.boot:spring-boot-starter-jdbc'
+	implementation 'org.springframework.boot:spring-boot-starter-security'
+	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+	implementation 'org.springframework.boot:spring-boot-starter-web'
+	implementation 'org.flywaydb:flyway-core'
+	implementation 'org.thymeleaf.extras:thymeleaf-extras-springsecurity6'
+	compileOnly 'org.projectlombok:lombok'
+	runtimeOnly 'com.h2database:h2'
+	annotationProcessor 'org.projectlombok:lombok'
+	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+	testImplementation 'org.springframework.security:spring-security-test'
+	testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+    implementation 'org.springframework.boot:spring-boot-starter-validation'
+    
+    // Додаємо залежність на Checkstyle для тестів
+    testImplementation "com.puppycrawl.tools:checkstyle:${checkstyle.toolVersion}"
+}
+
+tasks.named('test') {
+    useJUnitPlatform()
+}
