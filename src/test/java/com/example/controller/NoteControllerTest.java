@@ -41,7 +41,7 @@ public class NoteControllerTest {
         mockMvc.perform(get("/note/list"))
                 .andExpect(status().isOk())
                 .andExpect(model().attribute("notes", notes))
-                .andExpect(view().name("list"));
+                .andExpect(view().name("note/list"));
     }
 
     @Test
@@ -56,7 +56,7 @@ public class NoteControllerTest {
                 .param("id", "1"))
                 .andExpect(status().isOk())
                 .andExpect(model().attribute("note", note))
-                .andExpect(view().name("edit"));
+                .andExpect(view().name("note/edit"));
     }
 
     @Test
@@ -65,7 +65,7 @@ public class NoteControllerTest {
         mockMvc.perform(get("/note/create"))
                 .andExpect(status().isOk())
                 .andExpect(model().attributeExists("note"))
-                .andExpect(view().name("create"));
+                .andExpect(view().name("note/create"));
     }
 
     @Test
@@ -99,7 +99,7 @@ public class NoteControllerTest {
                 .param("id", "1"))
                 .andExpect(status().isOk())
                 .andExpect(model().attribute("note", note))
-                .andExpect(view().name("edit"));
+                .andExpect(view().name("note/edit"));
     }
 
     @Test

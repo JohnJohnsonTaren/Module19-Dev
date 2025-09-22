@@ -17,9 +17,5 @@ public class PasswordGenerator {
         String encodedPassword2 = encoder.encode("Yaroslav");
         System.out.println("login username task 3.0*: Yaroslav Lastivka");
         System.out.println("Encoded Password Yaroslav: " + encodedPassword2);
-
-        String encodedPassword3 = encoder.encode("Denis");
-        System.out.println("login username task 3.0*: Tytarenko Denis");
-        System.out.println("Encoded Password Denis: " + encodedPassword3);
     }
 }
